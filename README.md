@@ -1,0 +1,3 @@
+Pulls a random game title from a customizable text file
+
+Just for fun...
