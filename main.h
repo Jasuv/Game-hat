@@ -1,7 +1,10 @@
 #include<stdlib.h>
 #include<iostream>
-#include<fstream>
+#include<windows.h> // for sleep function
 #include<string>
+#include<queue>
+#include<fstream>
+#include<vector>
 
 using namespace std;
 
@@ -9,23 +12,19 @@ using namespace std;
 void printIntro();
 
 // adds a game to the hat
-string addGame(ifstream& fin, ofstream& fout, string& game);
+void addGame(string& game);
 /* 
- * ask input for game
- * open games.txt to read
- * read until EOF:
- *      if line == game:
- *      return "this game is already in hat"
- * open games.txt to write
- * add game to file
+ * return "this game is already in hat" if checkGame
+ * open library to write
+ * add game to library
  * return "added {game} to hat"
  */
 
 // removes a gmae from the hat
-string removeGame(ofstream& fout, string& line, string& game);
+void removeGame(string& game);
 /*
- * ask input for game
- * open games.txt to read
+ * get input for game
+ * return "this game is already in hat" if checkGame
  * read until EOF:
  *      if line == game:
  *          replace line with \b
@@ -33,8 +32,11 @@ string removeGame(ofstream& fout, string& line, string& game);
  * return "couldn't find {game} in hat"
  */
 
+// prints the library
+void viewGames();
+
 // prints a random game from the hat
-string getGame();
+void getGame(string& game);
 /*
  * establish random generator
  * open games.txt to read
